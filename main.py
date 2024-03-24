@@ -1,8 +1,8 @@
 import flet as ft
-
+from pages.login import LoginPage as lp
 
 def main(page: ft.Page):
-    page.add(ft.SafeArea(ft.Text("Hello, Flet!")))
-
+    login = lp()
+    page.add(login)
 
 ft.app(main)
