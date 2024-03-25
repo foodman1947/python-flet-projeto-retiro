@@ -6,5 +6,4 @@ def main(page: ft.Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     login = lp()
     page.add(login)
-    
 ft.app(main)
