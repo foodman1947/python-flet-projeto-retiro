@@ -19,22 +19,4 @@ class LoginPage(ft.UserControl):
             ) 
         )
     def verificarLogin(self, e):
-            usu = self.usuario.value
-            sen = self.senha.value
-            if usu =="":
-                self.usuario.error_text="Campo de usuario vazio"
-                self.update()
-
-            elif sen =="":
-                self.senha.error_text="Campo de senha vazia"
-                self.update()
-
-            elif usu =='' and sen =="":
-                self.senha.error_text="preencha o login e a senha!!"
-                self.update()
-            elif usu == "fernando" and sen =="fernando1234@":
-                print('bora para outra pagina mermão')
-                self.update()
-            elif usu == "joão" and sen == "91710972":
-                print('bora logar joão')
-                self.update()
+            pass
