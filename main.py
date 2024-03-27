@@ -1,20 +1,36 @@
 import flet as ft
 from pages.login import conectLogin as ct
 from pages.PaginaPrincipal import Pagina as pg
+from time import sleep
 
 def main(page: ft.Page):
     page.theme_mode = "dark"
-   
     def mudancaDeRota(route):
         page.views.clear()
-        def ida(e):
-            if nome.value == "joão" and senha.value =="91710972":
-                page.go("/paginaPrincipal")
-            elif nome.value == "fernando" and senha.value == "fernando123@":
-                page.go("/paginaPrincipal")
+        def logi(e):
+            if sen.value == consen.value and sen.value != "" and consen.value != "":
+                bc = ct(nme.value, sen.value)
+                bc.cadastrar()
+                bc.consultar()
+                sleep(5)
+                page.go("/")
+                
+                
             else:
-                nome.error_text = "há algo de errado com seu login ou senha"
+                sen.error_text = "Senhas não correspondem"
+                consen.error_text = "senhas não correspondem"
                 page.update()
+            pass
+        def ida(e):
+
+            bc = ct(nome.value, senha.value)
+            coulta = bc.consultar()
+            for i in coulta:
+                if nome.value == i[0] and senha.value == i[1]:
+                    page.go("/paginaPrincipal")
+                else:
+                    nome.error_text = "há algo de errado com seu login ou senha"
+                    page.update()
 
         def cad(e):
             page.go("/cadastro")
@@ -25,15 +41,16 @@ def main(page: ft.Page):
                     ft.Container(
                         width=600,
                         bgcolor=ft.colors.BLUE,
+                        padding = 30,
                         content=ft.Column(
                             [
                                 nome:=ft.TextField(label='nome de usuario'),
-                                senha:=ft.TextField(label="senha"),
+                                senha:=ft.TextField(label="senha", password=True, can_reveal_password=True),
                                 ft.Row([ft.ElevatedButton('Cadastrar', on_click=cad),ft.ElevatedButton("entrar", on_click=ida)], alignment= ft.CrossAxisAlignment.END)
                             ]
                         )
                     )
-                ], vertical_alignment=ft.MainAxisAlignment.CENTER,
+                ],vertical_alignment=ft.MainAxisAlignment.CENTER,
                 horizontal_alignment= ft.CrossAxisAlignment.CENTER
             )
         )
@@ -43,7 +60,25 @@ def main(page: ft.Page):
                 ft.View(
                     "/paginaPrincipal",
                     [
-                        ft.Text('oi')
+                        ft.Container(
+                            width = 800,
+                            bgcolor=ft.colors.RED,
+                            content=ft.Column(
+                                [
+                                    ft.Row(
+                                        [
+                                            ft.Text('olá'),
+                                            ft.TextField(label="olá"),
+                                            ft.Container(
+                                                width=100,
+                                                height = 100,
+                                                bgcolor=ft.colors.GREEN
+                                            )
+                                        ]
+                                    )
+                                ]
+                            )
+                        )
                     ],vertical_alignment=ft.MainAxisAlignment.CENTER,
                     horizontal_alignment= ft.CrossAxisAlignment.CENTER
                 )
@@ -58,6 +93,10 @@ def main(page: ft.Page):
                             bgcolor= ft.colors.BLUE,
                             content=ft.Column(
                                 [
+                                    nme:=ft.TextField(label="usuario"),
+                                    sen:=ft.TextField(label="criar senha"),
+                                    consen:=ft.TextField(label="confirmar senha"),
+                                    ft.ElevatedButton('Confirmar', on_click=logi)
                                     
                                 ]
                             )
