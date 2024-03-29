@@ -4,6 +4,7 @@ from pages.PaginaPrincipal import Pagina as pg
 from time import sleep
 
 def main(page: ft.Page):
+    principal = pg()
     page.theme_mode = "dark"
     def mudancaDeRota(route):
         page.views.clear()
@@ -14,8 +15,7 @@ def main(page: ft.Page):
                 bc.consultar()
                 sleep(5)
                 page.go("/")
-                
-                
+                        
             else:
                 sen.error_text = "Senhas não correspondem"
                 consen.error_text = "senhas não correspondem"
@@ -39,7 +39,7 @@ def main(page: ft.Page):
                 "/",
                 [
                     ft.Container(
-                        width=600,
+                        width=400,
                         bgcolor=ft.colors.BLUE,
                         padding = 30,
                         content=ft.Column(
@@ -60,25 +60,8 @@ def main(page: ft.Page):
                 ft.View(
                     "/paginaPrincipal",
                     [
-                        ft.Container(
-                            width = 800,
-                            bgcolor=ft.colors.RED,
-                            content=ft.Column(
-                                [
-                                    ft.Row(
-                                        [
-                                            ft.Text('olá'),
-                                            ft.TextField(label="olá"),
-                                            ft.Container(
-                                                width=100,
-                                                height = 100,
-                                                bgcolor=ft.colors.GREEN
-                                            )
-                                        ]
-                                    )
-                                ]
-                            )
-                        )
+                        principal
+                        
                     ],vertical_alignment=ft.MainAxisAlignment.CENTER,
                     horizontal_alignment= ft.CrossAxisAlignment.CENTER
                 )
@@ -96,8 +79,7 @@ def main(page: ft.Page):
                                     nme:=ft.TextField(label="usuario"),
                                     sen:=ft.TextField(label="criar senha"),
                                     consen:=ft.TextField(label="confirmar senha"),
-                                    ft.ElevatedButton('Confirmar', on_click=logi)
-                                    
+                                    ft.ElevatedButton('Confirmar', on_click=logi)                                  
                                 ]
                             )
                         )
