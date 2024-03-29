@@ -3,7 +3,7 @@ import flet as ft
 class Pagina(ft.UserControl):
     def build(self):
         return ft.Container(
-            width = 800,
+            width = 900,
             height = 900,
             padding = 20,
             content=ft.Column(
@@ -38,15 +38,19 @@ class Pagina(ft.UserControl):
                     ),
                     ft.Row(
                         [
-                            ft.ElevatedButton("Retirar do estoque", width=200, height=100),
-                            ft.ElevatedButton("quantidade diaria", width=200, height=100),
-                            ft.ElevatedButton("estoque", width=200, height=100),
+                            ft.ElevatedButton("Retirar do estoque", width=200, height=100, bgcolor=ft.colors.WHITE, color=ft.colors.BLACK),
+                            ft.ElevatedButton("quantidade diaria", width=200, height=100, bgcolor=ft.colors.WHITE,color=ft.colors.BLACK),
+                            ft.ElevatedButton("estoque", width=200, height=100, bgcolor=ft.colors.WHITE,color=ft.colors.BLACK ),
 
                         ],
-                        alignment= ft.MainAxisAlignment.SPACE_BETWEEN
+                        width = 900,
+                        height = 400,
+                        vertical_alignment= ft.MainAxisAlignment.CENTER,
+                        alignment= ft.MainAxisAlignment.SPACE_BETWEEN,
+        
 
                     )
                     
-                ], alignment = ft.CrossAxisAlignment.CENTER
+                ], alignment = ft.CrossAxisAlignment.CENTER,
             )
         )
