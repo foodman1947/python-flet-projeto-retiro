@@ -63,7 +63,9 @@ def main(page: ft.Page):
                         principal
                         
                     ],vertical_alignment=ft.MainAxisAlignment.CENTER,
-                    horizontal_alignment= ft.CrossAxisAlignment.CENTER
+                    horizontal_alignment= ft.CrossAxisAlignment.CENTER,
+                    scroll=ft.ScrollMode.ALWAYS,
+            
                 )
             )
         elif page.route == "/cadastro":
