@@ -13,7 +13,6 @@ def main(page: ft.Page):
                 bc = ct(nme.value, sen.value)
                 bc.cadastrar()
                 bc.consultar()
-                sleep(5)
                 page.go("/")
                         
             else:
