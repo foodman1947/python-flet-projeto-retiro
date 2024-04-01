@@ -1,11 +1,15 @@
 import flet as ft
 from pages.login import conectLogin as ct
-from pages.PaginaPrincipal import Pagina as pg
+from pages.tabum import Bvl as bv
 from time import sleep
 
 def main(page: ft.Page):
-    principal = pg()
+    page.scroll = ft.ScrollMode.ALWAYS
+    bbb = bv()
+    viewli = ft.Column(scroll=ft.ScrollMode.ALWAYS)
+    viewli.controls.append(bbb)
     page.theme_mode = "dark"
+    
     def mudancaDeRota(route):
         page.views.clear()
         def logi(e):
@@ -53,19 +57,57 @@ def main(page: ft.Page):
                 horizontal_alignment= ft.CrossAxisAlignment.CENTER
             )
         )
-        
+        def mudanca(e):
+            viewli.clean()
+            if tab.selected_index == 0:
+                viewli.controls.append(bbb)
+                page.update()
+            elif tab.selected_index == 1:
+                viewli.controls.append(ft.Text('olá mundo'))
+                page.update()
+
+            else:
+                viewli.controls.append(ft.Text('olá mundo2'))
+                page.update()
+
         if page.route == "/paginaPrincipal":
             page.views.append(
                 ft.View(
                     "/paginaPrincipal",
                     [
-                        principal
+                        ft.Column(
+                            [
+                                tab:=ft.Tabs(
+                                    selected_index=0,
+                                    tabs =[
+                                        a1:= ft.Tab(
+                                            text = "area-bvl",
+                                            content = ""
+                                        ),
+                                        a2:= ft.Tab(
+                                            text="area-silo",
+                                            content= ""
+                                        ),
+                                        a3:=ft.Tab(
+                                            text="area-trator",
+                                            content = ""
+                                        )
+                                    ],
+                                    on_change= mudanca,
+                                    scrollable = True,
+                                    
+                                ),
+                                viewli
+
+                            ]
+                        )
                         
                     ],vertical_alignment=ft.MainAxisAlignment.CENTER,
                     horizontal_alignment= ft.CrossAxisAlignment.CENTER,
-                    scroll=ft.ScrollMode.ALWAYS,
+                    scroll=ft.ScrollMode.ALWAYS
             
                 )
+                
             )
         elif page.route == "/cadastro":
             page.views.append(
@@ -75,6 +117,7 @@ def main(page: ft.Page):
                         ft.Container(
                             width=600,
                             bgcolor= ft.colors.BLUE,
+       
                             content=ft.Column(
                                 [
                                     nme:=ft.TextField(label="usuario"),
@@ -85,7 +128,8 @@ def main(page: ft.Page):
                             )
                         )
                     ],vertical_alignment=ft.MainAxisAlignment.CENTER,
-                    horizontal_alignment= ft.CrossAxisAlignment.CENTER
+                    horizontal_alignment= ft.CrossAxisAlignment.CENTER,
+                    scroll=ft.ScrollMode.ALWAYS
                 )
             )
             page.update()

@@ -11,7 +11,7 @@ class Bvl(ft.UserControl):
                                         src=f"../assets/bvl.png",
                                         width =350,
                                         height=350,
-                                        fit= ft.ImageFit.COVER,
+                                        fit= ft.ImageFit.CONTAIN,
                                         repeat=ft.ImageRepeat.NO_REPEAT,
                                         border_radius=ft.border_radius.all(10),
                                     ),
@@ -30,8 +30,6 @@ class Bvl(ft.UserControl):
 
                                 ],
                                 wrap=True,
-                                scroll=ft.ScrollMode.ALWAYS,
-                                alignment=ft.MainAxisAlignment.CENTER,
 
                                 
                             ),
@@ -51,10 +49,8 @@ class Bvl(ft.UserControl):
 
                             )
                             
-                        ], alignment = ft.MainAxisAlignment.CENTER,
-                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        ],
                         scroll=ft.ScrollMode.ALWAYS,
-                        on_scroll_interval=0,
 
 
                     )
