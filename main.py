@@ -9,7 +9,6 @@ def main(page: ft.Page):
     viewli = ft.Column(scroll=ft.ScrollMode.ALWAYS)
     viewli.controls.append(bbb)
     page.theme_mode = "dark"
-    
     def mudancaDeRota(route):
         page.views.clear()
         def logi(e):
